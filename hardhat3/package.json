@@ -21,8 +21,8 @@
     "dotenv": "^16.4.0"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "npx hardhat clean && tsc && npx hardhat compile",
     "test": "npm run build & npx hardhat test",
-    "deploy-cronos-token": "npm run build & npx hardhat run dist/scripts/deploy-cronos-token.js --network cronosTestnet"
+    "deploy-cronos-token": "npm run build & npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet"
   }
 }

@@ -1,6 +1,5 @@
 import { configVariable, task, type HardhatUserConfig } from "hardhat/config";
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
-import { ethers } from "ethers";
 
 const getHDWallet = () => {
   const PRIVATE_KEY = configVariable("PRIVATE_KEY");
@@ -29,21 +28,26 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    cronosMainnet: {
-      chainId: 25,
+    development: {
       type: "http",
-      url: "https://evm.cronos.org/",
+      url: "http://localhost:8545",
       accounts: getHDWallet(),
-      chainType: "l1",
     },
-    cronosTestnet: {
+    testnet: {
       chainId: 338,
       type: "http",
       url: "https://evm-t3.cronos.org/",
       accounts: getHDWallet(),
       chainType: "l1",
     },
-  },
+    mainnet: {
+      chainId: 25,
+      type: "http",
+      url: "https://evm.cronos.org/",
+      accounts: getHDWallet(),
+      chainType: "l1",
+    }
+  }
 };
 
 export default config;

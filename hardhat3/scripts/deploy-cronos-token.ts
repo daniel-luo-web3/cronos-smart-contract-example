@@ -5,7 +5,7 @@
 // Runtime Environment's members available in the global scope.
 import hre from "hardhat";
 
-const { ethers } = await hre.network.connect({});
+const { ethers } = await hre.network.connect();
 
 async function main() {
   const CronosToken = await ethers.getContractFactory("CronosToken");
