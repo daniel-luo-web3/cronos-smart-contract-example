@@ -17,11 +17,11 @@ contract CronosTokenTest is Test {
         alice = makeAddr("alice");
         bob = makeAddr("bob");
 
-        // 部署合约
+        // deploy contract
         token = new CronosToken("Cronos Token", "CT", initialSupply);
     }
 
-    /// @notice 验证部署时初始供应正确
+    /// @notice verify initial supply is correct
     function testInitialSupply() public {
         assertEq(token.totalSupply(), initialSupply);
         assertEq(token.balanceOf(owner), initialSupply);
@@ -29,7 +29,7 @@ contract CronosTokenTest is Test {
         assertEq(token.symbol(), "CT");
     }
 
-    /// @notice 测试 transfer 正常转账
+    /// @notice test normal transfer
     function testTransfer() public {
         uint256 amount = 100 ether;
 
@@ -39,14 +39,14 @@ contract CronosTokenTest is Test {
         assertEq(token.balanceOf(owner), initialSupply - amount);
     }
 
-    /// @notice 测试 transfer 余额不足 revert
+    /// @notice test transfer revert in case of insufficient balance
     function testTransferRevert_InsufficientBalance() public {
         vm.prank(alice); // 让 alice 发起交易（当前余额=0）
         vm.expectRevert(); // ERC20 标准会 revert
         token.transfer(bob, 1 ether);
     }
 
-    /// @notice 测试 approve / transferFrom
+    /// @notice test approve / transferFrom
     function testApproveAndTransferFrom() public {
         uint256 amount = 50 ether;
 
@@ -62,7 +62,7 @@ contract CronosTokenTest is Test {
         assertEq(token.balanceOf(owner), initialSupply - amount);
     }
 
-    /// @notice 测试 allowance 减少
+    /// @notice test allowance decreases after transferFrom
     function testAllowanceDecreasesAfterTransferFrom() public {
         uint256 amount = 20 ether;
         token.approve(alice, amount);
