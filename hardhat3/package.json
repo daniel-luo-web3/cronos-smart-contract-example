@@ -23,6 +23,6 @@
   "scripts": {
     "build": "npx hardhat clean && tsc && npx hardhat compile",
     "test": "npm run build & npx hardhat test",
-    "deploy-cronos-token": "npm run build & npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet"
+    "deploy-contract-cronos": "npm run build & npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet"
   }
 }
