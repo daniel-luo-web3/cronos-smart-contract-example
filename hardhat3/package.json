@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "npx hardhat clean && tsc && npx hardhat compile",
-    "test": "npm run build & npx hardhat test",
-    "deploy-contract-cronos": "npm run build & npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet"
+    "test": "npm run build && npx hardhat test",
+    "deploy-contract-cronos": "npm run build && npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet",
+    "deploy-contract-cronos-by-ignition": "npm run build && npx hardhat ignition deploy ignition/modules/CronosToken.ts --network testnet"
   }
 }
