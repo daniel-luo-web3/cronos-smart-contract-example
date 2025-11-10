@@ -24,6 +24,8 @@
     "build": "npx hardhat clean && tsc && npx hardhat compile",
     "test": "npm run build && npx hardhat test",
     "deploy-contract-cronos": "npm run build && npx hardhat run dist/scripts/deploy-cronos-token.js --network testnet",
-    "deploy-contract-cronos-by-ignition": "npm run build && npx hardhat ignition deploy ignition/modules/CronosToken.ts --network testnet"
+    "deploy-contract-cronos-by-ignition": "npm run build && npx hardhat ignition deploy ignition/modules/CronosToken.ts --network testnet",
+    "abi-constructor-params": "npm run build && node dist/scripts/abi-constructor-params.js",
+    "verify-contract": "npm run build && npx hardhat verify --network testnet --constructor-args-path ./scripts/constructor-args.ts --contract 'contracts/CronosToken.sol:CronosToken' 0xbF4E9269F4832b0D8E56EEFd2028933f362C8609"
   }
 }
