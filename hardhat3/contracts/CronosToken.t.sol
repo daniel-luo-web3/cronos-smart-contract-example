@@ -41,8 +41,8 @@ contract CronosTokenTest is Test {
 
     /// @notice test transfer revert in case of insufficient balance
     function testTransferRevert_InsufficientBalance() public {
-        vm.prank(alice); // 让 alice 发起交易（当前余额=0）
-        vm.expectRevert(); // ERC20 标准会 revert
+        vm.prank(alice); // let alice(her current balance:0) to trigger tx
+        vm.expectRevert();
         token.transfer(bob, 1 ether);
     }
 
@@ -50,11 +50,11 @@ contract CronosTokenTest is Test {
     function testApproveAndTransferFrom() public {
         uint256 amount = 50 ether;
 
-        // owner 授权 alice
+        // owner approves alice
         token.approve(alice, amount);
         assertEq(token.allowance(owner, alice), amount);
 
-        // alice 调用 transferFrom 把 owner 的币转给自己
+        // alice calls transferFrom to transfer owner's tokens to herself 
         vm.prank(alice);
         token.transferFrom(owner, alice, amount);
 

@@ -49,7 +49,7 @@ describe("CronosToken", function () {
     });
 
     it("should revert if transfer exceeds balance", async function () {
-        const fromBalance = await cronosTokenInst.balanceOf(alice.address); // addr1 初始 0
+        const fromBalance = await cronosTokenInst.balanceOf(alice.address);
         const transferAmount = 100;
 
         await expect(
